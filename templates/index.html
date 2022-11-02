@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/static/style.css"> -->
+    <title>{{ title }} — My Todo List</title>
+    <style>
+        .task { display: flex; flex-direction: row; gap: 1rem; align-items: baseline }
+        .task { font-size: 1rem }
+        .task > * { font-size: inherit }
+        .task > .title { order: 1; font-weight: normal }
+        .task > .description { order: 2; font-weight: bold }
+        .task > .complete { order: 3 }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Todo List</h1>
+    </header>
+
+    <main>
+        {% for task in tasks %}
+        <article class="task">
+            <h2 class="title">{{ task.title }}</h2>
+            <h3 class="complete">{{ "complete" if task.done else "outstanding" }}</h3>
+            <p class="description">{{ task.description }}</p>
+        </article>
+        {% endfor %}
+    </main>
+</body>
+</html>
