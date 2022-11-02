@@ -1,30 +1,35 @@
-from flask import render_template
+from flask import Blueprint, render_template
 
-from app import app
+#from app import app
 from models.todo_list import tasks
 
-@app.route('/')
+# All about blueprints!
+# https://flask.palletsprojects.com/en/2.2.x/blueprints/
+
+blueprint = Blueprint('flask_models', __name__)
+
+@blueprint.route('/')
 def index():
     # return "Hello World!"
     return """<a href="/tasks">/tasks</a>"""
 
-@app.route('/tasks')
+@blueprint.route('/tasks')
 def tasks_list():
     return render_template("index.html", title='Home',
         tasks=tasks)
 
-# @app.route('/tasks/<id>')
+# @blueprint.route('/tasks/<id>')
 # def tasks_view_one(id):
 #     pass
 
-# @app.route('/tasks', methods=['POST'])
+# @blueprint.route('/tasks', methods=['POST'])
 # def tasks_create():
 #     pass
 
-# @app.route('/tasks/<id>', methods=['PUT'])
+# @blueprint.route('/tasks/<id>', methods=['PUT'])
 # def tasks_update():
 #     pass
 
-# @app.route('/tasks/<id>', methods=['DELETE'])
+# @blueprint.route('/tasks/<id>', methods=['DELETE'])
 # def tasks_delete():
 #     pass
