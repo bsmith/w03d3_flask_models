@@ -15,7 +15,7 @@ def index():
 
 @blueprint.route('/tasks')
 def tasks_list():
-    return render_template("index.html", title='Home',
+    return render_template("index.html.j2", title='Home',
         tasks=tasks)
 
 # @blueprint.route('/tasks/<id>')
